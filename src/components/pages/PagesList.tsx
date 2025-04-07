@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -9,104 +10,14 @@ import {
   TableRow 
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
-import { 
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { 
-  Eye,
-  Edit,
-  Trash2,
-  MoreVertical,
-  Search,
-  FilePlus,
-  Globe,
-  EyeOff,
-} from 'lucide-react';
+import { Search, FilePlus } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
-
-interface Page {
-  id: string;
-  title: string;
-  slug: string;
-  author: string;
-  createdAt: Date;
-  updatedAt: Date;
-  published: boolean;
-}
-
-const mockPages: Page[] = [
-  {
-    id: '1',
-    title: 'Página Inicial',
-    slug: 'home',
-    author: 'Admin User',
-    createdAt: new Date('2023-01-15'),
-    updatedAt: new Date('2023-03-20'),
-    published: true
-  },
-  {
-    id: '2',
-    title: 'Sobre Nós',
-    slug: 'about',
-    author: 'Admin User',
-    createdAt: new Date('2023-02-10'),
-    updatedAt: new Date('2023-02-10'),
-    published: true
-  },
-  {
-    id: '3',
-    title: 'Serviços',
-    slug: 'services',
-    author: 'Editor User',
-    createdAt: new Date('2023-03-05'),
-    updatedAt: new Date('2023-04-12'),
-    published: true
-  },
-  {
-    id: '4',
-    title: 'Contato',
-    slug: 'contact',
-    author: 'Editor User',
-    createdAt: new Date('2023-03-15'),
-    updatedAt: new Date('2023-03-15'),
-    published: true
-  },
-  {
-    id: '5',
-    title: 'Blog',
-    slug: 'blog',
-    author: 'Admin User',
-    createdAt: new Date('2023-04-01'),
-    updatedAt: new Date('2023-05-10'),
-    published: true
-  },
-  {
-    id: '6',
-    title: 'Termos de Uso',
-    slug: 'terms',
-    author: 'Admin User',
-    createdAt: new Date('2023-05-12'),
-    updatedAt: new Date('2023-05-12'),
-    published: false
-  },
-  {
-    id: '7',
-    title: 'Política de Privacidade',
-    slug: 'privacy',
-    author: 'Admin User',
-    createdAt: new Date('2023-05-12'),
-    updatedAt: new Date('2023-05-12'),
-    published: false
-  }
-];
+import { Page } from '@/types/page';
+import { mockPages } from '@/data/mockPages';
+import { formatDate } from '@/utils/formatters';
+import PageActions from './PageActions';
+import StatusBadge from './StatusBadge';
 
 const PagesList: React.FC = () => {
   const [pages, setPages] = useState<Page[]>(mockPages);
@@ -129,20 +40,10 @@ const PagesList: React.FC = () => {
     }
   };
 
-  const handleDeletePage = () => {
-    if (deletePageId) {
-      setPages(pages.filter(page => page.id !== deletePageId));
-      toast.success('Página excluída com sucesso!');
-      setDeletePageId(null);
-    }
-  };
-
-  const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat('pt-BR', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
-    }).format(date);
+  const handleDeletePage = (pageId: string) => {
+    setPages(pages.filter(page => page.id !== pageId));
+    toast.success('Página excluída com sucesso!');
+    setDeletePageId(null);
   };
 
   return (
@@ -192,77 +93,14 @@ const PagesList: React.FC = () => {
                   <TableCell>{formatDate(page.createdAt)}</TableCell>
                   <TableCell>{formatDate(page.updatedAt)}</TableCell>
                   <TableCell>
-                    <Badge variant={page.published ? "default" : "outline"} className={page.published ? "bg-green-100 text-green-800 hover:bg-green-100" : "text-gray-500"}>
-                      {page.published ? 'Publicada' : 'Rascunho'}
-                    </Badge>
+                    <StatusBadge published={page.published} />
                   </TableCell>
                   <TableCell className="text-right">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                          <span className="sr-only">Abrir menu</span>
-                          <MoreVertical className="h-4 w-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Ações</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>
-                          <Link to={`/pages/${page.id}`} className="flex items-center w-full">
-                            <Eye className="mr-2 h-4 w-4" />
-                            Visualizar
-                          </Link>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <Link to={`/pages/${page.id}/edit`} className="flex items-center w-full">
-                            <Edit className="mr-2 h-4 w-4" />
-                            Editar
-                          </Link>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => handlePublishToggle(page.id)}>
-                          {page.published ? (
-                            <>
-                              <EyeOff className="mr-2 h-4 w-4" />
-                              Despublicar
-                            </>
-                          ) : (
-                            <>
-                              <Globe className="mr-2 h-4 w-4" />
-                              Publicar
-                            </>
-                          )}
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <AlertDialog>
-                          <AlertDialogTrigger asChild>
-                            <DropdownMenuItem onSelect={(e) => {
-                              e.preventDefault();
-                              setDeletePageId(page.id);
-                            }} className="text-red-600">
-                              <Trash2 className="mr-2 h-4 w-4" />
-                              Excluir
-                            </DropdownMenuItem>
-                          </AlertDialogTrigger>
-                          <AlertDialogContent>
-                            <AlertDialogHeader>
-                              <AlertDialogTitle>Confirmar exclusão</AlertDialogTitle>
-                              <AlertDialogDescription>
-                                Tem certeza que deseja excluir a página "{page.title}"? Esta ação não pode ser desfeita.
-                              </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                              <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                              <AlertDialogAction 
-                                onClick={handleDeletePage} 
-                                className="bg-red-600 text-white hover:bg-red-700"
-                              >
-                                Excluir
-                              </AlertDialogAction>
-                            </AlertDialogFooter>
-                          </AlertDialogContent>
-                        </AlertDialog>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+                    <PageActions
+                      page={page}
+                      onPublishToggle={handlePublishToggle}
+                      onDeleteConfirm={handleDeletePage}
+                    />
                   </TableCell>
                 </TableRow>
               ))
