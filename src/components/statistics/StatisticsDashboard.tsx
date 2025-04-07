@@ -2,7 +2,21 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { BarChart, PieChart, AreaChart, Legend, Tooltip, XAxis, YAxis, CartesianGrid, Bar, Pie, Area, ResponsiveContainer } from 'recharts';
+import { 
+  BarChart, 
+  PieChart, 
+  AreaChart, 
+  Legend, 
+  Tooltip, 
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Bar, 
+  Pie, 
+  Area, 
+  ResponsiveContainer,
+  Cell 
+} from 'recharts';
 import { DateRange } from 'react-day-picker';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';

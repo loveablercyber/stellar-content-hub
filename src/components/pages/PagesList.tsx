@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -26,7 +25,7 @@ import {
   Search,
   FilePlus,
   Globe,
-  GlobeOff,
+  EyeOff,
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -223,7 +222,7 @@ const PagesList: React.FC = () => {
                         <DropdownMenuItem onClick={() => handlePublishToggle(page.id)}>
                           {page.published ? (
                             <>
-                              <GlobeOff className="mr-2 h-4 w-4" />
+                              <EyeOff className="mr-2 h-4 w-4" />
                               Despublicar
                             </>
                           ) : (
