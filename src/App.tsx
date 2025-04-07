@@ -16,6 +16,7 @@ import PageEditorPage from "./pages/PageEditorPage";
 import SettingsPage from "./pages/SettingsPage";
 import StatisticsPage from "./pages/StatisticsPage";
 import SEOPage from "./pages/SEOPage";
+import TemplatesPage from "./pages/TemplatesPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ const App = () => (
               <Route path="/pages/new" element={<PageEditorPage />} />
               <Route path="/pages/:id" element={<PageEditorPage />} />
               <Route path="/pages/:id/edit" element={<PageEditorPage />} />
+              <Route path="/templates" element={<TemplatesPage />} />
               <Route path="/seo" element={<SEOPage />} />
               <Route path="/settings" element={<SettingsPage />} />
               <Route path="/statistics" element={<StatisticsPage />} />

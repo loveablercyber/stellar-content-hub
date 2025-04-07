@@ -1,0 +1,85 @@
+
+import { Template } from './types';
+
+export const templates: Template[] = [
+  {
+    id: 'lawyer',
+    name: 'Escritório de Advocacia',
+    description: 'Template ideal para advogados e escritórios de advocacia que desejam uma presença online profissional.',
+    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    category: 'Serviços',
+    pages: ['Início', 'Sobre Nós', 'Áreas de Atuação', 'Equipe', 'Casos de Sucesso', 'Blog', 'Contato'],
+  },
+  {
+    id: 'accountant',
+    name: 'Contabilidade',
+    description: 'Perfeito para contadores e escritórios de contabilidade que precisam transmitir confiabilidade.',
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    category: 'Serviços',
+    pages: ['Início', 'Serviços', 'Sobre', 'Clientes', 'Depoimentos', 'FAQ', 'Contato'],
+  },
+  {
+    id: 'barbershop',
+    name: 'Barbearia',
+    description: 'Design moderno e estiloso para barbearias e salões masculinos.',
+    image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    category: 'Beleza',
+    pages: ['Início', 'Serviços', 'Galeria', 'Equipe', 'Preços', 'Agendamento', 'Contato'],
+  },
+  {
+    id: 'beauty',
+    name: 'Salão de Beleza',
+    description: 'Template elegante para salões de beleza, estética e spas.',
+    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    category: 'Beleza',
+    pages: ['Início', 'Sobre', 'Serviços', 'Galeria', 'Equipe', 'Preços', 'Agendamento', 'Contato'],
+  },
+  {
+    id: 'engineer',
+    name: 'Engenharia & Arquitetura',
+    description: 'Ideal para engenheiros, arquitetos e empresas de construção.',
+    image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    category: 'Construção',
+    pages: ['Início', 'Sobre', 'Serviços', 'Projetos', 'Equipe', 'Depoimentos', 'Blog', 'Contato'],
+  },
+  {
+    id: 'restaurant',
+    name: 'Restaurante',
+    description: 'Template atraente para restaurantes, cafés e estabelecimentos gastronômicos.',
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    category: 'Alimentação',
+    pages: ['Início', 'Sobre', 'Menu', 'Galeria', 'Eventos', 'Reservas', 'Contato'],
+  },
+  {
+    id: 'realestate',
+    name: 'Imobiliária',
+    description: 'Perfeito para imobiliárias e corretores de imóveis.',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    category: 'Imóveis',
+    pages: ['Início', 'Sobre', 'Imóveis', 'Serviços', 'Equipe', 'Depoimentos', 'Blog', 'Contato'],
+  },
+  {
+    id: 'doctor',
+    name: 'Consultório Médico',
+    description: 'Template profissional para médicos, clínicas e profissionais da saúde.',
+    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    category: 'Saúde',
+    pages: ['Início', 'Sobre', 'Especialidades', 'Equipe', 'Infraestrutura', 'Agendamento', 'Blog', 'Contato'],
+  },
+  {
+    id: 'gym',
+    name: 'Academia & Fitness',
+    description: 'Design energético para academias, estúdios de fitness e personal trainers.',
+    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    category: 'Esporte',
+    pages: ['Início', 'Sobre', 'Serviços', 'Horários', 'Equipe', 'Depoimentos', 'Planos', 'Blog', 'Contato'],
+  },
+  {
+    id: 'photographer',
+    name: 'Fotografia',
+    description: 'Template visual para fotógrafos e estúdios de fotografia.',
+    image: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    category: 'Arte',
+    pages: ['Início', 'Sobre', 'Portfólio', 'Serviços', 'Depoimentos', 'Blog', 'Contato'],
+  }
+];

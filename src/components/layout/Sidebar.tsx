@@ -8,7 +8,8 @@ import {
   Settings, 
   LogOut,
   Users,
-  Search
+  Search,
+  Palette
 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 
@@ -18,6 +19,7 @@ const Sidebar: React.FC = () => {
   const navItems = [
     { to: '/dashboard', icon: <LayoutDashboard size={20} />, label: 'Dashboard' },
     { to: '/pages', icon: <FileText size={20} />, label: 'Pages' },
+    { to: '/templates', icon: <Palette size={20} />, label: 'Templates' },
     { to: '/seo', icon: <Search size={20} />, label: 'SEO' },
     { to: '/statistics', icon: <BarChart size={20} />, label: 'Statistics' },
     { to: '/users', icon: <Users size={20} />, label: 'Users' },
